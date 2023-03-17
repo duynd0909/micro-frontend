@@ -21,6 +21,7 @@ runTask((packageManager) => {
     },
     createStartCommand(packageManager, "react-service", "../react-service"),
     createStartCommand(packageManager, "vue-service", "../vue-service"),
+    createStartCommand(packageManager, "netlflix-service", "../not-netflix-main"),
     createStartCommand(packageManager, "host", "../host"),
   ];
 

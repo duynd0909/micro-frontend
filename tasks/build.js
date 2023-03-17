@@ -16,6 +16,7 @@ runTask((packageManager) => {
   const commands = [
     createBuildCommand(packageManager, "react-service", "../react-service"),
     createBuildCommand(packageManager, "vue-service", "../vue-service"),
+    createBuildCommand(packageManager, "netlflix-service", "../not-netflix-main"),
     createBuildCommand(packageManager, "host", "../host"),
   ];
 
