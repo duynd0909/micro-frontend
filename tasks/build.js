@@ -14,9 +14,12 @@ runTask((packageManager) => {
   logger.info(`*******Run with ${packageManager}********`);
 
   const commands = [
-    createBuildCommand(packageManager, "react-service", "../react-service"),
-    createBuildCommand(packageManager, "vue-service", "../vue-service"),
-    createBuildCommand(packageManager, "netlflix-service", "../not-netflix-main"),
+    createBuildCommand(
+      packageManager,
+      "netflix-service",
+      "../not-netflix-main"
+    ),
+    createBuildCommand(packageManager, "bank-service", "../bank-service"),
     createBuildCommand(packageManager, "host", "../host"),
   ];
 

@@ -19,9 +19,12 @@ runTask((packageManager) => {
       name: "assets-server",
       cwd: path.resolve(__dirname, "../share/assets"),
     },
-    createStartCommand(packageManager, "react-service", "../react-service"),
-    createStartCommand(packageManager, "vue-service", "../vue-service"),
-    createStartCommand(packageManager, "netlflix-service", "../not-netflix-main"),
+    createStartCommand(
+      packageManager,
+      "netflix-service",
+      "../not-netflix-main"
+    ),
+    createStartCommand(packageManager, "bank-service", "../bank-service"),
     createStartCommand(packageManager, "host", "../host"),
   ];
 
