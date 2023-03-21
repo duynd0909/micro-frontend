@@ -6,7 +6,7 @@
   </div>
 </template>
 
-<style scoped>
+<style>
 .spinner {
   display: inline-block;
   position: relative;

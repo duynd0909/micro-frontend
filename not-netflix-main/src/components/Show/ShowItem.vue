@@ -12,7 +12,7 @@ const props = defineProps({
   </RouterLink>
 </template>
 
-<style scoped>
+<style>
 .show-item {
   min-width: 140px;
   max-width: 140px;

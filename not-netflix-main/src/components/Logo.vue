@@ -2,7 +2,7 @@
   <div class="logo">NotNetflix</div>
 </template>
 
-<style scoped>
+<style >
 .logo {
   text-align: center;
   color: var(--color-primary);

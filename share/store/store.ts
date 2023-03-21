@@ -1,7 +1,6 @@
 type TWindow = {
-  counter$: Observable<number>;
-  increaseCounter: () => void;
-  decreaseCounter: () => void;
+  sharedText: Observable<string>;
+  setSharedText: (sharedText: string) => void;
   createSubscription: () => Subscription;
   tap: <T>(value: T) => void;
   initedStore: boolean;
@@ -13,17 +12,16 @@ const windowStore = window as unknown as TWindow;
 
 if (!windowStore.initedStore) {
   windowStore.initedStore = true;
-  const counterSubject = new BehaviorSubject<number>(0);
-  windowStore.counter$ = counterSubject.asObservable();
+  const sharedTextSubject = new BehaviorSubject<string>("");
+  windowStore.sharedText = sharedTextSubject.asObservable();
 
-  windowStore.increaseCounter = () => {
-    const currentValue = counterSubject.value;
-    counterSubject.next(currentValue + 1);
+  windowStore.setSharedText = (sharedText: string) => {
+    // const currentValue = fullScreenSubject.value;
+    sharedTextSubject.next(sharedText);
   };
-
-  windowStore.decreaseCounter = () => {
-    const currentValue = counterSubject.value;
-    counterSubject.next(currentValue - 1);
+  windowStore.getShared = (sharedText: string) => {
+    // const currentValue = fullScreenSubject.value;
+    sharedTextSubject.next(sharedText);
   };
 
   windowStore.createSubscription = () => new Subscription();

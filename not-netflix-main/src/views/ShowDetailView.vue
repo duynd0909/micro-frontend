@@ -26,7 +26,7 @@ onMounted(async () => {
   />
 </template>
 
-<style scoped>
+<style >
 .content {
   display: flex;
 }

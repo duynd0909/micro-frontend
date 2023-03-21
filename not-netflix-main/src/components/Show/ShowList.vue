@@ -1,10 +1,8 @@
 <script setup>
 import { defineProps } from 'vue'
 import ShowItem from './ShowItem.vue'
-
 const props = defineProps({ items: Array })
 </script>
-
 <template>
   <div class="shows-list">
     <slot></slot>
@@ -23,7 +21,7 @@ const props = defineProps({ items: Array })
   </div>
 </template>
 
-<style scoped>
+<style>
 .shows-list {
   margin-bottom: calc(var(--spacing) * 3);
 }

@@ -6,7 +6,7 @@ import federation from "@originjs/vite-plugin-federation";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [vue(),    
+  plugins: [vue({customElement:true}),    
     federation({
     name: "netflix-service",
     filename: "remoteEntry.js",

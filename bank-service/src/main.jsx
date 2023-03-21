@@ -1,19 +1,26 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
-import "./index.css";
+import style from "./index.css";
+import ReactShadowRoot from "react-shadow-root";
+import { StyleSheetManager } from "styled-components";
 
 class BankService extends HTMLElement {
   root;
 
   constructor() {
     super();
-    this.root = document.createElement("div");
-    ReactDOM.createRoot(this.root).render(<App></App>);
+    // this.root = document.createElement("div");
+    ReactDOM.createRoot(this).render(
+      <ReactShadowRoot>
+        <style>{style}</style>
+        <App></App>
+      </ReactShadowRoot>
+    );
   }
 
   connectedCallback() {
-    this.appendChild(this.root);
+    // this.appendChild(this.root);
   }
 }
 

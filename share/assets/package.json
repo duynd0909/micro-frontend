@@ -7,7 +7,7 @@
     "start": "node app.js"
   },
   "keywords": [],
-  "author": "quangnv13",
+  "author": "ndduy",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",

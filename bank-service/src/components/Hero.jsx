@@ -1,11 +1,24 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from '../style'
 import {discount, robot} from '../assets'
 import {GetStarted} from './index'
 import { configuationBase } from "../../../share/utils/functions";
+import windowStore from "../../../share/store/store";
+import { tap } from 'rxjs'
+
+let sharedTextSubscription = windowStore.createSubscription()
 
 const baseConfig = configuationBase("bank-service");
 const Hero = () => {
+  const [sharedTextInput,setSharedTextInput] = useState("");
+  useEffect(()=>{
+    sharedTextSubscription = windowStore.sharedText
+    .pipe(tap((c) => (setSharedTextInput(c))))
+    .subscribe()
+    return () =>{
+      sharedTextSubscription.unsubscribe()
+    }
+  },[])
   return (
     <section id="home" className={`flex md:flex-row flex-col ${styles.paddingY}`}>
       <div className={`flex-1 flex justify-start items-start flex-col xl:px-0 sm:px-16 px-6`}>
@@ -30,10 +43,7 @@ const Hero = () => {
         </div>
         <h1  className="font-poppins font-semibold ss:text-[68px] text-[52px] text-white ss:leading-[100px] leading-[75px] w-full"> Payment Method.</h1>
         <p className={`${styles.paragraph} max-w-[470px] mt-5`}>
-          Our team of experts uses a methodology
-          to identify the credity cards most likely
-          to fit your needs.
-          We examine annual percentage rates, annual fees.
+         {sharedTextInput}
         </p>
       </div>
 

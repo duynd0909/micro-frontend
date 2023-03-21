@@ -1,8 +1,16 @@
 <script setup>
 import { RouterView } from 'vue-router'
 import Logo from './components/Logo.vue'
-</script>
+import styles from './assets/main.css'
+import { defineComponent } from 'vue'
 
+</script>
+<script>
+export default defineComponent({
+  styles: [styles],
+
+})
+</script>
 <template>
   <div class="layout">
     <Logo />

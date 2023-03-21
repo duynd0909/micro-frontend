@@ -4,7 +4,10 @@ import debounce from 'lodash.debounce'
 import * as api from '../../services/api'
 import ShowList from '../Show/ShowList.vue'
 import LoadingSpinner from '../LoadingSpinner.vue'
+import windowStore from '../../../../share/store/store'
+import { tap } from 'rxjs'
 
+let sharedTextSubscription = windowStore.createSubscription()
 const state = reactive({
   query: '',
   items: [],
@@ -20,10 +23,38 @@ watch(
   }, 250)
 )
 </script>
+<script>
+export default {
+  data() {
+    return {
+      sharedTextInput: ''
+    }
+  },
+  created() {
+    sharedTextSubscription = windowStore.sharedText
+      .pipe(tap((c) => (this.sharedTextInput = c)))
+      .subscribe()
+  },
+  beforeUnmount() {
+    sharedTextSubscription.unsubscribe()
+  },
+  methods: {
+    inputSharedText(event) {
+      // console.log(input)
+      windowStore.setSharedText(event.target.value)
+    }
+  }
+}
+</script>
 <template>
   <div class="search-shows">
     <label>Search your favorite show 🎥</label>
-    <input data-test="search-input" type="text" placeholder="Search show" v-model="state.query" />
+    <input
+      @input="inputSharedText"
+      data-test="search-input"
+      type="text"
+      placeholder="Search show"
+    />
 
     <div class="loading" v-show="state.isLoading">
       <LoadingSpinner />
@@ -40,7 +71,7 @@ watch(
   </div>
 </template>
 
-<style scoped>
+<style>
 .loading {
   display: flex;
   width: 100%;

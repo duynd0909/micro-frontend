@@ -9,8 +9,6 @@ export default defineConfig({
     federation({
       name: "host",
       remotes: {
-        vue_service: "http://localhost:4175/assets/remoteEntry.js",
-        react_service: "http://localhost:4174/assets/remoteEntry.js",
         netflix_service: "http://localhost:4176/assets/remoteEntry.js",
         bank_service: "http://localhost:4177/assets/remoteEntry.js",
       },
